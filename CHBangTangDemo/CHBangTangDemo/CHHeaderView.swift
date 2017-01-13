@@ -23,10 +23,16 @@ class CHHeaderView: UIView {
                 mSearchBar?.layer.cornerRadius = 15;
                 mSearchBar?.layer.masksToBounds = true;
                 
+                mSearchBar?.setSearchFieldBackgroundImage(UIImage.imageWithColor(color: UIColor.clear, size: (mSearchBar?.size)!), for: .normal);
+                mSearchBar?.backgroundImage = UIImage.imageWithColor(color: UIColor.gray.withAlphaComponent(0.4), size: (mSearchBar?.size)!);
                 
-//                mSearchBar?.setSearchFieldBackgroundImage(, for: )
+                let searchField:UITextField = mSearchBar?.value(forKey: "searchField") as! UITextField;
+                searchField.textColor = UIColor.white;
+                searchField.setValue(UIColor.white, forKeyPath: "placeholderLabel.textColor");
             }
             
+            
+            return mSearchBar;
         }
     };
     
@@ -68,5 +74,53 @@ class CHHeaderView: UIView {
         self.addSubview(self.searchBar!);
         self.addSubview(self.searchButton!);
         self.addSubview(self.emailButton!);
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview);
+        
+        for tableview in self.tableViews! {
+            let options = NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue;
+            tableView?.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions(rawValue: options), context: nil);
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath != "contentOffset" {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context);
+        }
+        
+        let tableView = object as! UITableView;
+        let offsetY = tableView.contentOffset.y;
+        
+        let color = UIColor.white;
+        let alpha = Float.minimum(Float(1), Float(offsetY / 136));
+        
+        self.backgroundColor = color.withAlphaComponent(CGFloat(alpha));
+        
+        if offsetY < 125 {
+            UIView.animate(withDuration: 0.25, animations: {
+                () in
+                self.searchBar?.isHidden = false;
+                self.emailButton?.setBackgroundImage(#imageLiteral(resourceName: "home_email_black.png"), for: .normal);
+                self.searchBar?.frame = CGRect(x: -(self.width - 60), y: 30, width: self.width - 80, height: 30);
+                self.emailButton?.alpha = CGFloat(Float(1) - alpha);
+                self.searchBar?.alpha = CGFloat(Float(1) - alpha);
+            })
+        }
+        else if offsetY >= 125 {
+            UIView.animate(withDuration: 0.25, animations: {
+                () in
+                self.searchBar?.frame = CGRect(x: 20, y: 30, width: self.width - 80, height: 30);
+                self.searchButton?.isHidden = true;
+                self.emailButton?.alpha = 1;
+                self.emailButton?.setBackgroundImage(#imageLiteral(resourceName: "home_email_red.png"), for: .normal);
+            })
+        }
     }
 }
