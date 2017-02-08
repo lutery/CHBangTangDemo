@@ -18,13 +18,13 @@ class CHHomeRecomandModel: NSObject {
     var likes:String;
     
     override init() {
-        super.init();
-        
         placeholderImage = nil;
         picUrl = "";
         title = "";
         author = "";
         views = "";
         likes = "";
+        
+        super.init();
     }
 }
