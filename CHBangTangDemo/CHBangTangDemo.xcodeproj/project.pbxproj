@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2BF2BD69409104A48F4BDEA4 /* Pods_CHBangTangDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6836C60D4CE9055782ECC1DD /* Pods_CHBangTangDemo.framework */; };
 		7536A4301E461BE1001855D0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7536A42F1E461BE1001855D0 /* Utils.swift */; };
+		E62AC49E1E4C620900290998 /* CHTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC49D1E4C620900290998 /* CHTableViewController.swift */; };
+		E62AC4A21E4C634C00290998 /* CHTableViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC4A11E4C634C00290998 /* CHTableViewModule.swift */; };
 		E653A6F91E28B24400A4E979 /* CHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653A6F81E28B24400A4E979 /* CHView.swift */; };
 		E653A6FB1E28B97E00A4E979 /* CHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653A6FA1E28B97E00A4E979 /* CHButton.swift */; };
 		E6A3E50A1E25FD7F00938664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A3E5091E25FD7F00938664 /* AppDelegate.swift */; };
@@ -133,6 +135,8 @@
 		6836C60D4CE9055782ECC1DD /* Pods_CHBangTangDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CHBangTangDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A491C84A066E8C2417392A4 /* Pods-CHBangTangDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CHBangTangDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-CHBangTangDemo/Pods-CHBangTangDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7536A42F1E461BE1001855D0 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		E62AC49D1E4C620900290998 /* CHTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTableViewController.swift; sourceTree = "<group>"; };
+		E62AC4A11E4C634C00290998 /* CHTableViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTableViewModule.swift; sourceTree = "<group>"; };
 		E653A6F81E28B24400A4E979 /* CHView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHView.swift; sourceTree = "<group>"; };
 		E653A6FA1E28B97E00A4E979 /* CHButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHButton.swift; sourceTree = "<group>"; };
 		E6A3E5061E25FD7E00938664 /* CHBangTangDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHBangTangDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -308,6 +312,7 @@
 				E6A3E5151E25FD7F00938664 /* Info.plist */,
 				E6A3E5371E25FF3F00938664 /* CHHomeViewController.swift */,
 				7536A42F1E461BE1001855D0 /* Utils.swift */,
+				E62AC49D1E4C620900290998 /* CHTableViewController.swift */,
 			);
 			path = CHBangTangDemo;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 			isa = PBXGroup;
 			children = (
 				E6CE448C1E2CA01B00CB148C /* CHHomeRecomandModel.swift */,
+				E62AC4A11E4C634C00290998 /* CHTableViewModule.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -734,7 +740,9 @@
 				E6CE448A1E2C9ECB00CB148C /* CHBTHomeTableViewCell.swift in Sources */,
 				E6A3E5DD1E260C5900938664 /* CHImage.swift in Sources */,
 				7536A4301E461BE1001855D0 /* Utils.swift in Sources */,
+				E62AC4A21E4C634C00290998 /* CHTableViewModule.swift in Sources */,
 				E653A6F91E28B24400A4E979 /* CHView.swift in Sources */,
+				E62AC49E1E4C620900290998 /* CHTableViewController.swift in Sources */,
 				E653A6FB1E28B97E00A4E979 /* CHButton.swift in Sources */,
 				E6CE448D1E2CA01B00CB148C /* CHHomeRecomandModel.swift in Sources */,
 				E6A3E50A1E25FD7F00938664 /* AppDelegate.swift in Sources */,
