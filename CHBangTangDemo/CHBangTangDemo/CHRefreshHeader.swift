@@ -29,7 +29,7 @@ class CHRefreshHeader: UIView {
                 mImageViews = [UIImageView]();
                 
                 for i in 0..<11 {
-                    let imageUrl = String.init(format: "header%2d%@", "@2x.jpg");
+                    let imageUrl = String.init(format: "header%2d%@", i, "@2x.jpg");
                     let image = UIImage(named: imageUrl);
                     let imageView = UIImageView(frame: self.bounds);
                     imageView.image = image;
@@ -38,13 +38,15 @@ class CHRefreshHeader: UIView {
                     self.addSubview(imageView);
                 }
             }
+            
+            return self.mImageViews;
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame);
         
-        self.addSubview(refreshImageView!);
+//        self.addSubview(refreshImageView!);
     }
     
     required init?(coder aDecoder: NSCoder) {

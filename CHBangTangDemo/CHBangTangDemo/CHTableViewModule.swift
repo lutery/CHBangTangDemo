@@ -19,6 +19,14 @@ class CHTableViewModule: NSObject, UITableViewDelegate, UITableViewDataSource {
         return self.modelArray!;
     }
     
+    private var mTableView:UITableView? = nil;
+    
+    public init(tableView:UITableView){
+        self.mTableView = tableView;
+        super.init();
+        self.loadData();
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     }
@@ -28,13 +36,15 @@ class CHTableViewModule: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.modelArray?.count)!;
+        return self.ModelArray.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(CHBTHomeTableViewCell));
+        var cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(CHBTHomeTableViewCell)) as! CHBTHomeTableViewCell;
         
-        return cell!;
+        cell.HomeRecomandModel = self.ModelArray.object(at: indexPath.row) as! CHHomeRecomandModel;
+        
+        return cell;
     }
     
     private func loadData(){
@@ -46,11 +56,11 @@ class CHTableViewModule: NSObject, UITableViewDelegate, UITableViewDataSource {
             
             let dataArray = (dic.object(forKey: "data") as! NSDictionary).object(forKey: "topic") as! NSArray;
             
-            self.modelArray?.removeAllObjects();
+            self.ModelArray.removeAllObjects();
             
             for i in 0..<dataArray.count {
                 let model = CHHomeRecomandModel();
-                let imagePath = String.init(format: "recommand_%02ld%@", i + 1, ".jpg");
+                let imagePath = String.init(format: "recomand_%02ld%@", i + 1, ".jpg");
                 let image = UIImage(named: imagePath);
                 
                 model.placeholderImage = image;
@@ -60,7 +70,14 @@ class CHTableViewModule: NSObject, UITableViewDelegate, UITableViewDataSource {
                 model.title = itemDic.object(forKey: "title") as! String;
                 model.views = itemDic.object(forKey: "views") as! String;
                 model.likes = itemDic.object(forKey: "likes") as! String;
+                
+                let userDic = itemDic.object(forKey: "user") as! NSDictionary;
+                model.author = userDic.object(forKey: "nickname") as! String;
+                
+                self.ModelArray.add(model);
             }
+            
+            self.mTableView?.reloadData();
         }
         catch let error as NSError{
             print(error);

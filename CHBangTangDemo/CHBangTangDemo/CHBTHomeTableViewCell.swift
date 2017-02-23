@@ -20,7 +20,7 @@ class CHBTHomeTableViewCell: UITableViewCell {
             mHomeRecomandModel = newValue;
             
             if mHomeRecomandModel != nil {
-                self.mTopicImageView?.sd_setImage(with: URL.init(string: (mHomeRecomandModel?.picUrl)!), placeholderImage: mHomeRecomandModel?.placeholderImage);
+                self.TopicImageView.sd_setImage(with: URL.init(string: (mHomeRecomandModel?.picUrl)!), placeholderImage: mHomeRecomandModel?.placeholderImage);
                 self.TitleLabel.text = mHomeRecomandModel?.title;
                 self.AuthorLabel.text = mHomeRecomandModel?.author;
                 self.PvLabel.text = mHomeRecomandModel?.views;
@@ -172,6 +172,20 @@ class CHBTHomeTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews();
         
+        self.TopicImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true;
+        self.TopicImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20).isActive = true;
+        self.TopicImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20).isActive = true;
+        self.TopicImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20).isActive = true;
         
+        self.TitleLabel.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true;
+        self.TitleLabel.topAnchor.constraint(equalTo: self.TopicImageView.bottomAnchor, constant: 20).isActive = true;
+        
+        self.AuthorLabel.leadingAnchor.constraint(equalTo: self.BottomView.leadingAnchor).isActive = true;
+        self.AuthorLabel.topAnchor.constraint(equalTo: self.TitleLabel.bottomAnchor, constant: 15).isActive = true;
+        
+        self.PvImageView.leadingAnchor.constraint(equalTo: self.AuthorLabel.trailingAnchor, constant: 10).isActive = true;
+        self.PvImageView.topAnchor.constraint(equalTo: self.AuthorLabel.topAnchor).isActive = true;
+        self.PvImageView.widthAnchor.constraint(equalToConstant: 11);
+        self.PvImageView.heightAnchor.constraint(equalToConstant: 11);
     }
 }

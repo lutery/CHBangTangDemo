@@ -9,9 +9,11 @@
 import UIKit
 import SDWebImage
 
+
+/// 头部搜索header
 class CHHeaderView: UIView {
     
-    weak var tableView:UITableView?;
+//    weak var tableView:UITableView?;
     var tableViews:[UITableView]?;
     
     private var mSearchBar:UISearchBar?;
@@ -83,16 +85,17 @@ class CHHeaderView: UIView {
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview);
         
-        for tableview in self.tableViews! {
-            let options = NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue;
-            tableView?.addObserver(self, forKeyPath: "contentOffset", options: NSKeyValueObservingOptions(rawValue: options), context: nil);
+        for tbView in self.tableViews! {
+            let options = NSKeyValueObservingOptions(rawValue: NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue);
+            tbView.addObserver(self, forKeyPath: "contentOffset", options: options, context: nil);
         }
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        if keyPath != "contentOffset" {
+        if !(keyPath == "contentOffset") {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context);
+            return;
         }
         
         let tableView = object as! UITableView;

@@ -13,6 +13,18 @@
 		E62AC4A21E4C634C00290998 /* CHTableViewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62AC4A11E4C634C00290998 /* CHTableViewModule.swift */; };
 		E653A6F91E28B24400A4E979 /* CHView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653A6F81E28B24400A4E979 /* CHView.swift */; };
 		E653A6FB1E28B97E00A4E979 /* CHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E653A6FA1E28B97E00A4E979 /* CHButton.swift */; };
+		E6635CDC1E55A165004630CA /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDB1E55A165004630CA /* SDWebImage.framework */; };
+		E6635CE01E55A16B004630CA /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDD1E55A16B004630CA /* Masonry.framework */; };
+		E6635CE11E55A16B004630CA /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDE1E55A16B004630CA /* MJRefresh.framework */; };
+		E6635CE21E55A16B004630CA /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDF1E55A16B004630CA /* SDCycleScrollView.framework */; };
+		E6635CE31E55A177004630CA /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDD1E55A16B004630CA /* Masonry.framework */; };
+		E6635CE41E55A177004630CA /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDD1E55A16B004630CA /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6635CE51E55A177004630CA /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDE1E55A16B004630CA /* MJRefresh.framework */; };
+		E6635CE61E55A177004630CA /* MJRefresh.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDE1E55A16B004630CA /* MJRefresh.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6635CE71E55A177004630CA /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDF1E55A16B004630CA /* SDCycleScrollView.framework */; };
+		E6635CE81E55A177004630CA /* SDCycleScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDF1E55A16B004630CA /* SDCycleScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6635CE91E55A177004630CA /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDB1E55A165004630CA /* SDWebImage.framework */; };
+		E6635CEA1E55A177004630CA /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6635CDB1E55A165004630CA /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6A3E50A1E25FD7F00938664 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A3E5091E25FD7F00938664 /* AppDelegate.swift */; };
 		E6A3E5111E25FD7F00938664 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6A3E5101E25FD7F00938664 /* Assets.xcassets */; };
 		E6A3E5141E25FD7F00938664 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6A3E5121E25FD7F00938664 /* LaunchScreen.storyboard */; };
@@ -83,14 +95,6 @@
 		E6A3E5BE1E26047900938664 /* recomand_16.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6A3E57C1E26047900938664 /* recomand_16.jpg */; };
 		E6A3E5BF1E26047900938664 /* recomand_17.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6A3E57D1E26047900938664 /* recomand_17.jpg */; };
 		E6A3E5C01E26047900938664 /* recomand_18.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E6A3E57E1E26047900938664 /* recomand_18.jpg */; };
-		E6A3E5CF1E260B5A00938664 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5CE1E260B5A00938664 /* Masonry.framework */; };
-		E6A3E5D01E260B5A00938664 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5CE1E260B5A00938664 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6A3E5D21E260B5A00938664 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5D11E260B5A00938664 /* MJRefresh.framework */; };
-		E6A3E5D31E260B5A00938664 /* MJRefresh.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5D11E260B5A00938664 /* MJRefresh.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6A3E5D51E260B5A00938664 /* SDCycleScrollView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5D41E260B5A00938664 /* SDCycleScrollView.framework */; };
-		E6A3E5D61E260B5A00938664 /* SDCycleScrollView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5D41E260B5A00938664 /* SDCycleScrollView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6A3E5D81E260B5A00938664 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5D71E260B5A00938664 /* SDWebImage.framework */; };
-		E6A3E5D91E260B5A00938664 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A3E5D71E260B5A00938664 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E6A3E5DD1E260C5900938664 /* CHImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A3E5DC1E260C5900938664 /* CHImage.swift */; };
 		E6CE44881E2C958500CB148C /* CHRefreshHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE44871E2C958500CB148C /* CHRefreshHeader.swift */; };
 		E6CE448A1E2C9ECB00CB148C /* CHBTHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CE44891E2C9ECB00CB148C /* CHBTHomeTableViewCell.swift */; };
@@ -121,10 +125,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E6A3E5D91E260B5A00938664 /* SDWebImage.framework in Embed Frameworks */,
-				E6A3E5D61E260B5A00938664 /* SDCycleScrollView.framework in Embed Frameworks */,
-				E6A3E5D01E260B5A00938664 /* Masonry.framework in Embed Frameworks */,
-				E6A3E5D31E260B5A00938664 /* MJRefresh.framework in Embed Frameworks */,
+				E6635CEA1E55A177004630CA /* SDWebImage.framework in Embed Frameworks */,
+				E6635CE81E55A177004630CA /* SDCycleScrollView.framework in Embed Frameworks */,
+				E6635CE41E55A177004630CA /* Masonry.framework in Embed Frameworks */,
+				E6635CE61E55A177004630CA /* MJRefresh.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +143,10 @@
 		E62AC4A11E4C634C00290998 /* CHTableViewModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHTableViewModule.swift; sourceTree = "<group>"; };
 		E653A6F81E28B24400A4E979 /* CHView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHView.swift; sourceTree = "<group>"; };
 		E653A6FA1E28B97E00A4E979 /* CHButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHButton.swift; sourceTree = "<group>"; };
+		E6635CDB1E55A165004630CA /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CHBangTangDemo-ekkutwxwihkrqaedyixprsxjtdsh/Build/Products/Debug-iphoneos/SDWebImage/SDWebImage.framework"; sourceTree = "<group>"; };
+		E6635CDD1E55A16B004630CA /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CHBangTangDemo-ekkutwxwihkrqaedyixprsxjtdsh/Build/Products/Debug-iphoneos/Masonry/Masonry.framework"; sourceTree = "<group>"; };
+		E6635CDE1E55A16B004630CA /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MJRefresh.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CHBangTangDemo-ekkutwxwihkrqaedyixprsxjtdsh/Build/Products/Debug-iphoneos/MJRefresh/MJRefresh.framework"; sourceTree = "<group>"; };
+		E6635CDF1E55A16B004630CA /* SDCycleScrollView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDCycleScrollView.framework; path = "../../../../Library/Developer/Xcode/DerivedData/CHBangTangDemo-ekkutwxwihkrqaedyixprsxjtdsh/Build/Products/Debug-iphoneos/SDCycleScrollView/SDCycleScrollView.framework"; sourceTree = "<group>"; };
 		E6A3E5061E25FD7E00938664 /* CHBangTangDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHBangTangDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6A3E5091E25FD7F00938664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6A3E5101E25FD7F00938664 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,10 +223,6 @@
 		E6A3E57C1E26047900938664 /* recomand_16.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recomand_16.jpg; sourceTree = "<group>"; };
 		E6A3E57D1E26047900938664 /* recomand_17.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recomand_17.jpg; sourceTree = "<group>"; };
 		E6A3E57E1E26047900938664 /* recomand_18.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = recomand_18.jpg; sourceTree = "<group>"; };
-		E6A3E5CE1E260B5A00938664 /* Masonry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Masonry.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6A3E5D11E260B5A00938664 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6A3E5D41E260B5A00938664 /* SDCycleScrollView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDCycleScrollView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6A3E5D71E260B5A00938664 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6A3E5DC1E260C5900938664 /* CHImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHImage.swift; sourceTree = "<group>"; };
 		E6CE44871E2C958500CB148C /* CHRefreshHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHRefreshHeader.swift; sourceTree = "<group>"; };
 		E6CE44891E2C9ECB00CB148C /* CHBTHomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHBTHomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -231,10 +235,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6A3E5D81E260B5A00938664 /* SDWebImage.framework in Frameworks */,
-				E6A3E5D51E260B5A00938664 /* SDCycleScrollView.framework in Frameworks */,
-				E6A3E5CF1E260B5A00938664 /* Masonry.framework in Frameworks */,
-				E6A3E5D21E260B5A00938664 /* MJRefresh.framework in Frameworks */,
+				E6635CE71E55A177004630CA /* SDCycleScrollView.framework in Frameworks */,
+				E6635CE51E55A177004630CA /* MJRefresh.framework in Frameworks */,
+				E6635CE01E55A16B004630CA /* Masonry.framework in Frameworks */,
+				E6635CE11E55A16B004630CA /* MJRefresh.framework in Frameworks */,
+				E6635CE31E55A177004630CA /* Masonry.framework in Frameworks */,
+				E6635CE21E55A16B004630CA /* SDCycleScrollView.framework in Frameworks */,
+				E6635CDC1E55A165004630CA /* SDWebImage.framework in Frameworks */,
+				E6635CE91E55A177004630CA /* SDWebImage.framework in Frameworks */,
 				2BF2BD69409104A48F4BDEA4 /* Pods_CHBangTangDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +276,10 @@
 		B08819CEC0E55B2A51510B3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E6635CDD1E55A16B004630CA /* Masonry.framework */,
+				E6635CDE1E55A16B004630CA /* MJRefresh.framework */,
+				E6635CDF1E55A16B004630CA /* SDCycleScrollView.framework */,
+				E6635CDB1E55A165004630CA /* SDWebImage.framework */,
 				6836C60D4CE9055782ECC1DD /* Pods_CHBangTangDemo.framework */,
 			);
 			name = Frameworks;
@@ -276,10 +288,6 @@
 		E6A3E4FD1E25FD7E00938664 = {
 			isa = PBXGroup;
 			children = (
-				E6A3E5D71E260B5A00938664 /* SDWebImage.framework */,
-				E6A3E5D41E260B5A00938664 /* SDCycleScrollView.framework */,
-				E6A3E5D11E260B5A00938664 /* MJRefresh.framework */,
-				E6A3E5CE1E260B5A00938664 /* Masonry.framework */,
 				E6A3E5081E25FD7E00938664 /* CHBangTangDemo */,
 				E6A3E51D1E25FD7F00938664 /* CHBangTangDemoTests */,
 				E6A3E5281E25FD7F00938664 /* CHBangTangDemoUITests */,

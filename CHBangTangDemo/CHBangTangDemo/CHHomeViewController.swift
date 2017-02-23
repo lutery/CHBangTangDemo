@@ -25,8 +25,10 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
     // 字体填充
     let PADDING = 15.0;
     
-    // 当前的
+    // 当前的展示的TableView
     private var mCurrentTableView:UITableView? = nil;
+    
+    /// 顶部搜索框
     private var mCHHeaderView:CHHeaderView? = nil;
     var HeaderView:CHHeaderView{
         get{
@@ -38,13 +40,15 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
             return self.mCHHeaderView!;
         }
     }
+    
+    /// 循环播放控件
     private var mCycleScrollView:SDCycleScrollView? = nil;
     var CycleScrollView:SDCycleScrollView{
         get{
             if self.mCycleScrollView == nil {
                 var imageArray = Array<String>();
                 
-                for index in 0..<9 {
+                for index in 1..<9 {
                     let imageName = String.init(format: "cycle_%02d.jpg", index);
                     imageArray.append(imageName);
                 }
@@ -56,7 +60,7 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    //滑动相关事件
+    //标题段段则滚动控件
     private var mSegmentScrollView:UIScrollView? = nil;
     public var SegmentScrollView:UIScrollView{
         get{
@@ -99,17 +103,21 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
             return self.mSegmentScrollView!;
         }
     }
+    
+    /// 当前选择的端红色下标
     private var mCurrentSelectedItemImageView:UIImageView? = nil;
     public var CurrentSelectedItemImageView:UIImageView{
         get{
             if self.mCurrentSelectedItemImageView == nil {
                 self.mCurrentSelectedItemImageView = UIImageView();
-                self.mCurrentSelectedItemImageView?.image = UIImage(named: "nar_bgbg");
+                self.mCurrentSelectedItemImageView?.image = UIImage(named: "nar_bgbg.png");
             }
             
             return self.mCurrentSelectedItemImageView!;
         }
     }
+    
+    /// 底部表格滚动控件
     private var mBottomScrollView:UIScrollView? = nil;
     public var BottomScrollView:UIScrollView{
         get{
@@ -121,9 +129,28 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
                 let colors = [UIColor.red, UIColor.blue, UIColor.gray, UIColor.green, UIColor.purple, UIColor.orange, UIColor.white, UIColor.red, UIColor.blue, UIColor.gray, UIColor.green];
                 
                 for i in 0..<CATEGORY.count {
-                    var jsdTableViewController = 
+                    var jsdTableViewController = CHTableViewController();
+                    jsdTableViewController.view.frame = CGRect(x: Int(SCREEN_WIDTH * CGFloat(i)), y: 0, width: Int(SCREEN_WIDTH), height: Int(SCREEN_HEIGHT));
+                    
+                    jsdTableViewController.view.backgroundColor = colors[i];
+                    self.BottomScrollView.addSubview(jsdTableViewController.view);
+                    self.mControllers?.append(jsdTableViewController);
+                    self.mTableViews?.append(jsdTableViewController.TableView);
+                    
+                    let refreshHeader = CHRefreshHeader(frame: CGRect(x: 0, y: 212, width: SCREEN_WIDTH, height: 30));
+                    refreshHeader.backgroundColor = UIColor.white;
+                    refreshHeader.tableView = jsdTableViewController.TableView;
+                    jsdTableViewController.TableView.tableHeaderView?.addSubview(refreshHeader);
+                    
+                    let options:NSKeyValueObservingOptions = NSKeyValueObservingOptions.init(rawValue: NSKeyValueObservingOptions.new.rawValue | NSKeyValueObservingOptions.old.rawValue);
+                    jsdTableViewController.TableView.addObserver(self, forKeyPath: "contentOffset", options: options, context: nil);
                 }
+                
+                self.mCurrentTableView = self.mTableViews?[0];
+                self.BottomScrollView.contentSize = CGSize(width: (self.mControllers?.count)! * Int(SCREEN_WIDTH), height: 0);
             }
+            
+            return self.mBottomScrollView!;
         }
     }
     
@@ -148,8 +175,14 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
         self.mControllers = Array<UIViewController>();
         self.mTableViews = Array<UITableView>();
         
-//        self.view.addSubview(self.mBottomScrollView);
-//        self.mCHHeaderView?.tableViews = Array<UITableView>.init(arrayLiteral: self.mTableViews);
+        self.view.addSubview(self.BottomScrollView);
+        self.HeaderView.tableViews = self.mTableViews;
+        
+        self.view.addSubview(self.CycleScrollView);
+        self.view.addSubview(self.SegmentScrollView);
+        self.view.addSubview(self.HeaderView);
+        
+        self.automaticallyAdjustsScrollViewInsets = false;
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -216,6 +249,80 @@ class CHHomeViewController: UIViewController, UIScrollViewDelegate {
             }
             
             self.mBottomScrollView?.contentOffset = CGPoint(x: Int(SCREEN_WIDTH) * index, y: 0);
+        })
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        let tableView = object as? UITableView;
+        
+        if !(self.mCurrentTableView == tableView){
+            return;
+        }
+        
+        if !(keyPath == "contentOffset"){
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context);
+            return;
+        }
+        
+        let tableViewOffsetY = Int((tableView?.contentOffset.y)!);
+        
+        self.mLastOffsetY = Float(tableViewOffsetY);
+        
+        if tableViewOffsetY >= 0 && tableViewOffsetY <= 136 {
+            self.SegmentScrollView.frame = CGRect(x: 0, y: 200 - tableViewOffsetY, width: Int(SCREEN_WIDTH), height: 40);
+            self.CycleScrollView.frame = CGRect(x: 0, y: 0 - tableViewOffsetY, width: Int(SCREEN_WIDTH), height: 200);
+        }
+        else if tableViewOffsetY < 0 {
+            self.SegmentScrollView.frame = CGRect(x: 0, y: 200, width: SCREEN_WIDTH, height: 40);
+            self.CycleScrollView.frame = CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: 200);
+        }
+        else if tableViewOffsetY > 136 {
+            self.SegmentScrollView.frame = CGRect(x: 0, y: 64, width: SCREEN_WIDTH, height: 40);
+            self.CycleScrollView.frame = CGRect(x: 0, y: -136, width: SCREEN_WIDTH, height: 200);
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView != self.BottomScrollView {
+            return;
+        }
+        
+        var index:Int = Int(scrollView.contentOffset.x / scrollView.frame.size.width);
+        
+        let currentButton = self.mTitleButtons?[index];
+        for button in self.mTitleButtons! {
+            button.isSelected = false;
+        }
+        
+        currentButton?.isSelected = true;
+        
+        self.mCurrentTableView = self.mTableViews?[index];
+        for tableView in self.mTableViews!{
+            if self.mLastOffsetY >= 0 && self.mLastOffsetY <= 136 {
+                tableView.contentOffset = CGPoint(x: 0, y: Int(self.mLastOffsetY));
+            }
+            else if self.mLastOffsetY < 0 {
+                tableView.contentOffset = CGPoint(x: 0, y: 0);
+            }
+            else if self.mLastOffsetY > 136 {
+                tableView.contentOffset = CGPoint(x: 0, y: 136);
+            }
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            if index == 0 {
+                self.CurrentSelectedItemImageView.frame = CGRect(x: Int(self.PADDING), y: Int(self.SegmentScrollView.frame.size.height) - 2, width: Int((currentButton?.frame.size.width)!), height: 2);
+            }
+            else{
+                let preButton = self.mTitleButtons?[index - 1];
+                
+                let offsetX = Int((preButton?.frame.minX)!) - Int(self.PADDING * 2);
+                
+                self.SegmentScrollView.scrollRectToVisible(CGRect.init(x: offsetX, y: 0, width: Int(self.SegmentScrollView.frame.size.width), height: Int(self.SegmentScrollView.frame.size.height)), animated: true);
+                
+                self.CurrentSelectedItemImageView.frame = CGRect(x: (currentButton?.frame.minX)!, y: self.SegmentScrollView.frame.size.height - 2, width: (currentButton?.frame.size.width)!, height: 2);
+            }
         })
     }
 }
